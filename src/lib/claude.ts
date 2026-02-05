@@ -3,10 +3,15 @@ import { ExtractedComponent, ExtractedElement } from "./figma";
 import { StoryDefinition } from "./jira";
 import { FSDData, FieldRequirement } from "./confluence";
 
-// OpenAI client using API key from environment variable
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Check if OpenAI API key is configured
+export function isOpenAIConfigured(): boolean {
+  return Boolean(process.env.OPENAI_API_KEY);
+}
+
+// OpenAI client - only initialize if API key is present
+const openai = process.env.OPENAI_API_KEY
+  ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+  : null;
 
 export interface AIGeneratedContent {
   description: string;
@@ -311,6 +316,10 @@ FIGMA URL: ${figmaUrl}
 
 Return ONLY valid JSON.`;
 
+  if (!openai) {
+    throw new Error("OpenAI API key is not configured. Please add OPENAI_API_KEY to your .env file.");
+  }
+
   const response = await openai.chat.completions.create({
     model: "gpt-4o-mini",
     messages: [{ role: "user", content: prompt }],
@@ -350,6 +359,10 @@ export async function generateEpicDescription(
 Type: ${component.type}
 Dimensions: ${component.dimensions.width}x${component.dimensions.height}px
 Child elements: ${component.children.length}`;
+
+  if (!openai) {
+    throw new Error("OpenAI API key is not configured. Please add OPENAI_API_KEY to your .env file.");
+  }
 
   const response = await openai.chat.completions.create({
     model: "gpt-4o-mini",

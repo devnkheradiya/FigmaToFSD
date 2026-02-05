@@ -1,0 +1,4 @@
+# Mark environment files as binary (non-readable by AI tools)
+.env binary
+.env.* binary
+*.env binary

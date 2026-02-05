@@ -124,6 +124,19 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [hasSavedCredentials, setHasSavedCredentials] = useState(false);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
+  const [isOpenAIConfigured, setIsOpenAIConfigured] = useState(true);
+
+  // Check if OpenAI API key is configured
+  useEffect(() => {
+    fetch("/api/config")
+      .then((res) => res.json())
+      .then((data) => {
+        setIsOpenAIConfigured(data.openaiConfigured);
+      })
+      .catch(() => {
+        setIsOpenAIConfigured(false);
+      });
+  }, []);
 
   // Load saved credentials on mount
   useEffect(() => {
@@ -360,6 +373,34 @@ export default function Home() {
           </div>
         </div>
       </header>
+
+      {/* API Key Missing Banner */}
+      {!isOpenAIConfigured && (
+        <div className="bg-amber-50 border-b border-amber-200">
+          <div className="max-w-4xl mx-auto px-6 py-3 flex items-center gap-3">
+            <svg
+              className="w-5 h-5 text-amber-600 flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+              />
+            </svg>
+            <p className="text-sm text-amber-800">
+              <strong>OpenAI API key is missing.</strong> Add{" "}
+              <code className="bg-amber-100 px-1 py-0.5 rounded font-mono text-xs">
+                OPENAI_API_KEY=your-key
+              </code>{" "}
+              to your <code className="bg-amber-100 px-1 py-0.5 rounded font-mono text-xs">.env</code> file and restart the server.
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-6 py-12">
