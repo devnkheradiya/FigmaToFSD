@@ -1,0 +1,323 @@
+Document Status
+
+
+
+Tech Review
+
+ 
+
+Jira Stories
+
+https://horizontal.atlassian.net/browse/DPWOR-2410 
+
+Figma Reference
+
+https://www.figma.com/design/8D5SBb4qOkelVBDEANzwc2/DPWorld-Design-System?node-id=6867-15009&m=dev 
+
+Description:
+
+Component is global and can be viewed on all site pages
+
+Component to include 3 main sections:
+
+Logo
+
+Quick Links
+
+Social Icons and Bottom links
+
+Functional requirements/ Acceptance criteria:
+
+As an end user, 
+
+I can click on the Logo to land on the DPW Homepage
+
+I can find a main column title within Quick links section - not clickable
+
+I can find a main column title within Quick Links section - clickable (only when a link is added for it in CMS)
+
+I can click on the link titles under the the main column title within Quick links section
+
+I can find generic page links at the bottom clickable to open to respective site pages (alignment to follow as per design)
+
+I can find social links redirecting users to business pages on respective social channels  (alignment to follow as per design)
+
+I can see translated content for region specific sites
+
+I can hover over the links to find a hover effect as per the website style guidelines 
+
+I can find contact information with a phone number (respective to region sites) where the phone number is clickable to open with a call application from web or mobile [Client wanted to redirect this to a webform instead of direct click but decision on implementation can be made with new IA] [Discussed with Sneha]
+
+Decision: Add a link field for managing this. If not provided, link the telephone number as default behaviour.
+
+As a content author,
+
+I can update the logo and the link on the logo
+
+I can add/ update/delete quick links with main title (max 140 char), link title (max 130 char) and linked url on the title
+
+I can add/update/delete the link text and link urls for the bottom links
+
+I can add/update/delete the social icons and their links from CMS
+
+Design Notes:
+
+Footer to scale in full width for all site pages
+
+Alignment of elements to follow as per design for Desktop specific to languages
+
+Mobile Designs
+
+Elements to stack as per design reference
+
+Field Level Requirements:
+
+Component Distribution
+
+Element
+
+Name of element on the rendering (ex: Headline, CTA Link)
+
+Field Type
+
+(ex: multi-line text, drop down menu, image)
+
+Field Note
+
+required or optional in CMS
+
+Data Source
+
+Content Managed or integrated into another system?
+
+Display
+
+Field-level display rules (ex: left aligned, max char count, user interactions) . Identify if the display is internal (content author) or external (site visitor).
+
+Notes
+
+Footer
+
+Logo
+
+Browse Media
+
+Optional
+
+Content managed
+
+aligned as per design reference
+
+In CMS, authors can revise the logo image
+
+
+
+Logo Link
+
+Link field
+
+Optional
+
+Content Managed
+
+
+
+In CMS, authors can add a link that can be navigated when the user clicks on the logo in the footer
+
+
+
+Quick Links
+
+Tree List/ Multi-list
+
+Required
+
+Content Managed
+
+Aligned as per design reference
+
+Authors can include Max 6 Quick link section Item titles to display in column distribution as per design
+
+Authors can sort these titles to show in order as required
+
+
+
+Bottom links
+
+Tree list/ multi-list
+
+Required
+
+Content Managed
+
+Aligned as per design reference
+
+authors can add max 5 links to display in single row
+
+if more added, a items should fall in new row(Tech confirmed with Design: If there are more than 5 links then it will cover the remaining space before the social icons section and then move to the second row. The placement of social icons will remain the same.)
+
+Quick Links Section Items
+
+Item Main title
+
+Single line text
+
+Required
+
+Content Managed
+
+Aligned in columns as per design
+
+Stacked above all sub links
+
+
+
+
+
+Item Main title link
+
+Link field
+
+Optional
+
+Content Managed
+
+
+
+authors can add links that can be clicked from the main column title
+
+
+
+Item sub title
+
+Single line text
+
+Required
+
+Content Managed
+
+Aligned in columns per design
+
+Stacked below main column title
+
+
+
+
+
+Item sub title link url
+
+Link field
+
+Optional
+
+Content Managed
+
+
+
+authors can add links that can be clicked from the main column title
+
+Title to display as basic text when not linked with url
+
+As discussed on 7 April - the link is required for displaying 
+
+
+
+Item Phone number
+
+Number + Character field
+
+Optional
+
+Content Managed
+
+Aligned in columns per design
+
+Stacked below main column title or sub text if any
+
+authors can add number that can be used for calling with single click
+
+Bottom Link Items
+
+Title
+
+Single line field
+
+Required
+
+Content Managed
+
+Aligned in columns on single row as per design
+
+authors can add/ update/ remove the titles 
+
+
+
+Title Link
+
+Link field
+
+Optional
+
+Content Managed
+
+
+
+authors can add links that can be clicked from the titles
+
+Social Media Items
+
+Social Media icon
+
+Browse media
+
+Required
+
+Content Managed
+
+Aligned as per design reference in single row
+
+authors can add/ update/ remove icons 
+
+Max 5-6 icons recommended
+
+SVG icons should be used
+
+
+
+Social Media links
+
+Link field
+
+Required
+
+Content Managed
+
+
+
+authors can add links that can be clicked from icons for user to navigate to social media pages to social media pages
+
+Design references:
+
+Desktop
+
+Tablet
+
+Mobile
+
+EN (and most of all language versions)
+
+
+
+AR (awaiting design)
+
+EN (and most of all language versions)
+
+
+
+AR (awaiting design)
+
+EN (and most of all language versions)
+
+
+
+AR (awaiting design)
